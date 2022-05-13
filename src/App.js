@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// Import Score and Board.
+import { Score } from './features/score/Score.js';
+import { Board } from './features/board/Board.js';
+
+// Import setBoard and resetCards.
+import { setBoard, resetCards } from './features/board/boardSlice';
+
+const App = () => {
+    // Declare dispatch.
+    const dispatch = useDispatch();
+
+    // Handles start of game.
+    const startGameHandler = () => {
+        // Dispatch an action to set the board.
+        dispatch(setBoard());
+    };
+
+    const tryAgainHandler = () => {
+        // Dispatch an action to reset the board.
+        dispatch(resetCards());
+    };
+
+    return (
+        <div className="App">
+            <Score />
+            <Board />
+            <footer className="footer">
+                <button className="start-button" onClick={startGameHandler}>
+                    Start Game
+                </button>
+                <button className="try-new-pair-button" onClick={tryAgainHandler}>
+                    Try New Pair
+                </button>
+            </footer>
+        </div>
+    );
+};
 
 export default App;
