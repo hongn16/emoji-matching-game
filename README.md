@@ -1,4 +1,4 @@
-[Live Site](https://emoji-matching-game.netlify.app/)
+### [Live Site](https://emoji-matching-game.netlify.app/)
 
 ## Available Scripts
 
